@@ -143,9 +143,9 @@ export const config: GhoulConfig = {
       live: false,
     },
     {
-      id: "baby",
-      name: "BABY GHOUL",
-      domain: "https://www.babyghoul.com",
+      id: "toddler",
+      name: "TODDLER GHOUL",
+      domain: "https://www.toddlerghoul.com",
       icon: "🍼",
       color: "#3b82f6",
       realm: "The Playful Realm",
