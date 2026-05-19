@@ -10,9 +10,10 @@ interface Particle {
   color: string;
   life: number;
   maxLife: number;
+  type: 'mote' | 'sand' | 'wisp';
 }
 
-export default function AmbientParticles() {
+export default function ZenParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number>(0);
@@ -30,21 +31,29 @@ export default function AmbientParticles() {
     resize();
     window.addEventListener('resize', resize);
 
-    const colors = ['#00d4ff', '#a855f7', '#6366f1', '#00d4ff80', '#a855f780'];
+    const colors = ['#c4b5fd', '#ddd6fe', '#e9d5ff', '#f3e8ff', '#d1d5db', '#e5e7eb'];
 
-    const createParticle = (): Particle => ({
-      x: Math.random() * canvas.width,
-      y: canvas.height + Math.random() * 100,
-      size: Math.random() * 4 + 1,
-      speedY: -(Math.random() * 0.5 + 0.2),
-      speedX: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.3 + 0.05,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      life: 0,
-      maxLife: Math.random() * 600 + 300,
-    });
+    const createParticle = (): Particle => {
+      const typeRoll = Math.random();
+      let type: Particle['type'];
+      if (typeRoll < 0.5) type = 'mote';
+      else if (typeRoll < 0.8) type = 'sand';
+      else type = 'wisp';
 
-    // Initialize particles
+      return {
+        x: Math.random() * canvas.width,
+        y: type === 'wisp' ? canvas.height + Math.random() * 30 : Math.random() * canvas.height,
+        size: type === 'wisp' ? Math.random() * 15 + 8 : Math.random() * 2.5 + 0.5,
+        speedY: type === 'wisp' ? -(Math.random() * 0.3 + 0.1) : (Math.random() - 0.5) * 0.15,
+        speedX: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.2 + 0.04,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 0,
+        maxLife: Math.random() * 1200 + 800,
+        type,
+      };
+    };
+
     for (let i = 0; i < 40; i++) {
       const p = createParticle();
       p.y = Math.random() * canvas.height;
@@ -61,32 +70,42 @@ export default function AmbientParticles() {
         p.life++;
 
         const lifeRatio = p.life / p.maxLife;
-        const fadeIn = Math.min(lifeRatio * 10, 1);
-        const fadeOut = lifeRatio > 0.8 ? (1 - lifeRatio) / 0.2 : 1;
+        const fadeIn = Math.min(lifeRatio * 4, 1);
+        const fadeOut = lifeRatio > 0.92 ? (1 - lifeRatio) / 0.08 : 1;
         const currentOpacity = p.opacity * fadeIn * fadeOut;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
+        ctx.save();
         ctx.globalAlpha = currentOpacity;
-        ctx.fill();
 
-        // Glow effect for larger particles
-        if (p.size > 3) {
+        if (p.type === 'mote') {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
           ctx.fillStyle = p.color;
-          ctx.globalAlpha = currentOpacity * 0.1;
+          ctx.globalAlpha = currentOpacity * 0.05;
+          ctx.fill();
+        } else if (p.type === 'sand') {
+          ctx.fillStyle = p.color;
+          ctx.fillRect(p.x, p.y, p.size, p.size);
+        } else {
+          // wisp
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = currentOpacity * 0.08;
           ctx.fill();
         }
 
-        // Respawn
-        if (p.life >= p.maxLife || p.y < -10) {
+        ctx.restore();
+
+        if (p.life >= p.maxLife || (p.type === 'wisp' && p.y < -30)) {
           particlesRef.current[i] = createParticle();
         }
       });
 
-      ctx.globalAlpha = 1;
       rafRef.current = requestAnimationFrame(animate);
     };
 

@@ -1,5 +1,5 @@
-import GhostMascot from '@/components/GhostMascot';
-import AmbientParticles from '@/components/AmbientParticles';
+import ZenMascot from '@/components/ZenMascot';
+import ZenParticles from '@/components/ZenParticles';
 import Home from '@/pages/Home';
 
 export default function App() {
@@ -8,11 +8,11 @@ export default function App() {
       {/* Noise texture overlay */}
       <div className="noise-overlay" />
 
-      {/* Ambient floating particles */}
-      <AmbientParticles />
+      {/* Ambient zen particles (smoke, sand, motes) */}
+      <ZenParticles />
 
-      {/* The interactive ghost mascot */}
-      <GhostMascot />
+      {/* The interactive zen mascot */}
+      <ZenMascot />
 
       {/* Page content */}
       <Home />
