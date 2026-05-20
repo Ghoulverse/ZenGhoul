@@ -1,8 +1,5 @@
 /**
  * Ghoul Site Configuration
- * 
- * This is the single source of truth for each ghoul's brand site.
- * When creating a new ghoul site, copy the template and update this file.
  */
 
 export interface CrossLink {
@@ -17,49 +14,46 @@ export interface CrossLink {
 
 export interface Product {
   name: string;
-  description?: string;
-  comingSoon?: boolean;
+  tagline: string;
+  description: string;
+  category: 'core' | 'pro' | 'tool' | 'refill' | 'limited';
+  volume: string;
+  price: string;
+  features: string[];
+  heroIngredient?: string;
 }
 
 export interface GhoulConfig {
-  /** Unique ID: goo, beauty, garden, zen, party, tradie, baby, scholar */
   id: string;
-  /** Display name: "GOO GHOUL", "BEAUTY GHOUL" */
   name: string;
-  /** Short tagline for hero */
   tagline: string;
-  /** One-line description */
   description: string;
-  /** Full domain with protocol: "https://www.googhoul.com" */
   domain: string;
-  /** Emoji icon */
   icon: string;
-  /** Is this the leader (GOO GHOUL)? */
   isLeader: boolean;
-  /** Product catalog */
   products: Product[];
-  /** Cross-links to all ghoul sites + GHOULVERSE */
   crossLinks: CrossLink[];
-  /** CTA section text */
   cta: {
     headline: string;
     subheadline: string;
     buttonText: string;
     placeholderText: string;
   };
-  /** Game link (most ghouls link to the shared GOO RUNNER) */
   gameUrl: string;
-  /** Social links */
   social: {
     twitter?: string;
     instagram?: string;
     youtube?: string;
   };
+  science: {
+    title: string;
+    subtitle: string;
+    description: string;
+    adaptation: string;
+    stats: { label: string; value: string }[];
+  };
 }
 
-// ─────────────────────────────────────────────
-// ZEN GHOUL
-// ─────────────────────────────────────────────
 export const config: GhoulConfig = {
   id: "zen",
   name: "ZEN GHOUL",
@@ -71,11 +65,94 @@ export const config: GhoulConfig = {
   isLeader: false,
 
   products: [
-    { name: "Aromatherapy Diffuser", comingSoon: true },
-    { name: "Meditation Cushion Spray", comingSoon: true },
-    { name: "Essential Oil Blend", comingSoon: true },
-    { name: "Space Mist", comingSoon: true },
-    { name: "Calming Candle", comingSoon: true },
+    {
+      name: "Aromatherapy Mist",
+      tagline: "Clean air, clear mind",
+      description: "Room-fine mist with essential oil blend of lavender, sandalwood, and vetiver. Neutralises airborne odours while promoting mental clarity.",
+      category: "core",
+      volume: "250ml",
+      price: "$24.99 AUD",
+      features: ["Essential oil blend", "4-hour scent life", "Pet-safe formula"],
+      heroIngredient: "Slow-Release Ectoplasm™",
+    },
+    {
+      name: "Calming Floor Wash",
+      tagline: "Meditation for your floors",
+      description: "Low-foaming floor concentrate with chamomile extract. Designed for slow, mindful application with a mop or cloth.",
+      category: "core",
+      volume: "1L Concentrate",
+      price: "$22.99 AUD",
+      features: ["Low-foam ritual", "Chamomile infused", "Makes 10L diluted"],
+      heroIngredient: "Slow-Release Ectoplasm™",
+    },
+    {
+      name: "Meditation Space Spray",
+      tagline: "Sanctuary in a bottle",
+      description: "Surface and air spray for yoga mats, cushions, and meditation nooks. Removes sweat, dust, and energetic residue without harsh chemicals.",
+      category: "core",
+      volume: "300ml",
+      price: "$19.99 AUD",
+      features: ["Yoga mat safe", "Sweat neutralising", "Non-slip residue"],
+      heroIngredient: "Slow-Release Ectoplasm™",
+    },
+    {
+      name: "Essential Oil Diffuser Cleaner",
+      tagline: "Purity for your purifier",
+      description: "Deep-cleans ultrasonic and nebulising diffusers. Dissolves essential oil buildup and hard water deposits to restore mist output.",
+      category: "pro",
+      volume: "200ml",
+      price: "$16.99 AUD",
+      features: ["Ultrasonic safe", "Hard water dissolver", "Restores mist output"],
+      heroIngredient: "Slow-Release Ectoplasm™",
+    },
+    {
+      name: "Zen Garden Maintenance Solution",
+      tagline: "Balance for your bonsai",
+      description: "Specialised care for moss, raked gravel, and miniature plantings. Prevents algae growth while preserving the aesthetic of Japanese-inspired gardens.",
+      category: "pro",
+      volume: "500ml",
+      price: "$29.99 AUD",
+      features: ["Algae prevention", "Gravel brightening", "Moss conditioning"],
+      heroIngredient: "Slow-Release Ectoplasm™",
+    },
+    {
+      name: "Bamboo Cleaning Cloths",
+      tagline: "Soft on surfaces, kind to earth",
+      description: "Set of 6 ultra-soft bamboo fibre cloths in earth tones. Naturally antimicrobial and compostable at end of life.",
+      category: "tool",
+      volume: "6 Pack",
+      price: "$19.99 AUD",
+      features: ["Naturally antimicrobial", "Compostable", "Earth-tone set"],
+    },
+    {
+      name: "The Ritual Caddy",
+      tagline: "Organized tranquility",
+      description: "Handwoven seagrass caddy with ceramic liner. Holds your full Zen Ghoul collection with compartments for bottles, cloths, and incense.",
+      category: "tool",
+      volume: "Basket",
+      price: "$39.99 AUD",
+      features: ["Handwoven seagrass", "Ceramic liner", "Compartmentalised"],
+    },
+    {
+      name: "Aromatherapy Mist Refill",
+      tagline: "Sustainable serenity",
+      description: "Concentrated refill for the Aromatherapy Mist. Same essential oil blend in a glass amber bottle with measured dosing cap.",
+      category: "refill",
+      volume: "500ml",
+      price: "$19.99 AUD",
+      features: ["Glass amber bottle", "Measured dosing cap", "2x refills"],
+      heroIngredient: "Slow-Release Ectoplasm™",
+    },
+    {
+      name: "Winter Solstice Blend",
+      tagline: "Limited winter release",
+      description: "A seasonal formulation with frankincense, myrrh, and cedarwood. Available December through February only.",
+      category: "limited",
+      volume: "250ml",
+      price: "$27.99 AUD",
+      features: ["Winter botanicals", "Seasonal only", "Gift packaging"],
+      heroIngredient: "Slow-Release Ectoplasm™",
+    },
   ],
 
   crossLinks: [
@@ -93,7 +170,7 @@ export const config: GhoulConfig = {
       name: "ZEN GHOUL",
       domain: "https://www.zenghoul.com",
       icon: "🧘",
-      color: "#c4b5fd",
+      color: "#a855f7",
       realm: "The Tranquil Gardens",
       live: true,
     },
@@ -154,9 +231,9 @@ export const config: GhoulConfig = {
   ],
 
   cta: {
-    headline: "Find Your Center?",
-    subheadline: "Join the mindful circle. Be the first to know when we drop.",
-    buttonText: "Breathe In",
+    headline: "Investor Inquiries",
+    subheadline: "Join the GHOULVERSE portfolio. Request the full product deck and financial projections.",
+    buttonText: "Request Deck",
     placeholderText: "Enter your email...",
   },
 
@@ -166,5 +243,18 @@ export const config: GhoulConfig = {
     twitter: "#",
     instagram: "#",
     youtube: "#",
+  },
+
+  science: {
+    title: "The Science",
+    subtitle: "Slow-Release Ectoplasm™",
+    description: "Every ZEN GHOUL product is powered by Slow-Release Ectoplasm™ — a proprietary enzyme complex that activates gradually over time rather than in a single burst. This creates a sustained cleaning action that maintains harmony with the environment rather than disrupting it.",
+    adaptation: "For the Tranquil Gardens, we engineered a time-released variant that works in harmony with mindful pacing — no harsh chemical reactions, no sudden odours, just steady, gentle effectiveness.",
+    stats: [
+      { label: "Release Duration", value: "4 hrs" },
+      { label: "Essential Oil Retention", value: "92%" },
+      { label: "Surface Stress", value: "Zero" },
+      { label: "Mindfulness Score", value: "10/10" },
+    ],
   },
 };
