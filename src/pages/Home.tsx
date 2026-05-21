@@ -4,8 +4,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Twitter, Instagram, Youtube, ArrowRight, Gamepad2,
   Ghost, Wind, CircleDot, Waves, Flame,
+  Briefcase, Building2,
 } from 'lucide-react';
 import { config } from '@/data/ghoul.config';
+import ZenMascot from '@/components/ZenMascot';
+import ZenParticles from '@/components/ZenParticles';
+import EcosystemMap from '@/components/EcosystemMap';
+import MarketStats from '@/components/MarketStats';
+import IPBadge from '@/components/IPBadge';
+import RoadmapTimeline from '@/components/RoadmapTimeline';
+import InvestorCTA from '@/components/InvestorCTA';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,6 +51,10 @@ export default function Home() {
   const gameRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const ecosystemRef = useRef<HTMLDivElement>(null);
+  const marketRef = useRef<HTMLDivElement>(null);
+  const ipRef = useRef<HTMLDivElement>(null);
+  const roadmapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -78,7 +90,7 @@ export default function Home() {
       });
 
       // Scroll reveals — very slow and gentle
-      [breathRef, scienceRef, productRef, collectiveRef, gameRef, portfolioRef, ctaRef].forEach((ref) => {
+      [breathRef, scienceRef, productRef, collectiveRef, gameRef, portfolioRef, ctaRef, ecosystemRef, marketRef, ipRef, roadmapRef].forEach((ref) => {
         if (ref.current) {
           gsap.from(ref.current.querySelectorAll('.reveal'), {
             opacity: 0,
@@ -104,6 +116,8 @@ export default function Home() {
       <FloatingOrb delay={6} size={350} color="#a855f7" className="bottom-0 left-1/3" />
       <FloatingOrb delay={2} size={300} color="#c4b5fd" className="top-1/2 left-1/2" />
 
+      <ZenParticles />
+
       {/* ===== NAV ===== */}
       <nav className="fixed top-0 left-0 right-0 z-50 py-6 px-8 md:px-16"
         style={{ background: 'rgba(248,245,255,0.7)', backdropFilter: 'blur(20px)' }}>
@@ -119,12 +133,19 @@ export default function Home() {
             className="text-[10px] tracking-[0.3em] uppercase text-[#78716c] hover:text-[#06b6d4] transition-colors">
             GHOULVERSE
           </a>
+          <a href="#ecosystem" className="hidden md:flex items-center gap-1.5 text-[10px] font-bold tracking-[0.2em] uppercase text-[#94a3b8] hover:text-[#a855f7] transition-colors">
+            <Briefcase className="w-3 h-3" /> Investors
+          </a>
         </div>
       </nav>
 
       {/* ===== HERO ===== */}
       <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center px-8 text-center">
-        <div className="hero-fade mb-8">
+        <div className="hero-fade mb-8 flex flex-col items-center gap-3">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[9px] tracking-[0.3em] uppercase text-[#a855f7]/70"
+            style={{ background: 'rgba(168,85,247,0.06)', borderRadius: '9999px', border: '1px solid rgba(168,85,247,0.1)' }}>
+            <Building2 className="w-3 h-3" /> House of GHOUL
+          </span>
           <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/60">The Tranquil Gardens</span>
         </div>
 
@@ -143,6 +164,10 @@ export default function Home() {
             Find Your Calm
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
+        </div>
+
+        <div className="mt-12">
+          <ZenMascot />
         </div>
 
         {/* Scroll indicator */}
@@ -164,11 +189,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { icon: Wind, value: '∞', label: 'Breaths Taken', color: '#a855f7' },
               { icon: CircleDot, value: '0', label: 'Stress Remaining', color: '#06b6d4' },
               { icon: Waves, value: '100%', label: 'Stillness Rate', color: '#a855f7' },
+              { icon: Building2, value: '6', label: 'House of GHOUL', color: '#a855f7' },
             ].map((stat, i) => (
               <div key={i} className="reveal breathe p-10 text-center transition-all duration-700 hover:scale-[1.02]"
                 style={{ background: 'rgba(255,255,255,0.5)', borderRadius: '50%', aspectRatio: '1 / 1.1' }}>
@@ -177,6 +203,20 @@ export default function Home() {
                 <div className="text-[10px] tracking-[0.3em] uppercase text-[#78716c]/50">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ECOSYSTEM ===== */}
+      <section ref={ecosystemRef} id="ecosystem" className="relative py-32 md:py-48 px-8 md:px-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal text-center mb-16">
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">The Ecosystem</span>
+            <h2 className="font-zen text-4xl md:text-5xl text-[#292524] mb-3">House of GHOUL</h2>
+            <p className="font-zen text-lg text-[#a855f7]/80">Eight brands. One universe. Infinite potential.</p>
+          </div>
+          <div className="reveal">
+            <EcosystemMap />
           </div>
         </div>
       </section>
@@ -210,6 +250,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== IP ===== */}
+      <section ref={ipRef} className="relative py-32 md:py-48 px-8 md:px-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="reveal text-center mb-16">
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">Intellectual Property</span>
+            <h2 className="font-zen text-4xl md:text-5xl text-[#292524] mb-3">Protected Assets</h2>
+            <p className="text-[#78716c]/60 max-w-sm mx-auto font-light">Trademarked. Registered. Defensible.</p>
+          </div>
+          <div className="reveal">
+            <IPBadge />
+          </div>
+        </div>
+      </section>
+
       {/* ===== PRODUCTS ===== */}
       <section ref={productRef} id="sanctuary" className="relative py-32 md:py-48 px-8 md:px-16">
         <div className="max-w-5xl mx-auto">
@@ -226,7 +280,7 @@ export default function Home() {
               const count = config.products.filter((p) => p.category === tab.key).length;
               return (
                 <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                  className="px-6 py-2.5 text-xs tracking-wider transition-all"
+                  className="px-6 py-2.5 text-xs tracking-wider transition-all min-h-11"
                   style={{
                     background: isActive ? 'linear-gradient(135deg, #a855f7, #06b6d4)' : 'rgba(255,255,255,0.4)',
                     color: isActive ? '#fff' : '#78716c',
@@ -264,7 +318,7 @@ export default function Home() {
 
                   <span className="text-[9px] tracking-[0.3em] uppercase text-[#78716c]/40 block mb-3">{product.category}</span>
 
-                  <h3 className="font-zen text-lg text-[#292524] mb-2">{product.name}</h3>
+                  <h3 className="font-zen text-lg text-[#292524] mb-2 break-words">{product.name}</h3>
                   <p className="text-[#a855f7]/70 text-xs mb-3">{product.tagline}</p>
                   <p className="text-[#78716c]/50 text-xs leading-relaxed mb-4 font-light">{product.description}</p>
 
@@ -282,6 +336,34 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== MARKET ===== */}
+      <section ref={marketRef} className="relative py-32 md:py-48 px-8 md:px-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal text-center mb-16">
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">Market Opportunity</span>
+            <h2 className="font-zen text-4xl md:text-5xl text-[#292524] mb-3">The Numbers</h2>
+            <p className="text-[#78716c]/60 max-w-sm mx-auto font-light">Wellness meets gaming. A $200B+ intersection.</p>
+          </div>
+          <div className="reveal">
+            <MarketStats />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ROADMAP ===== */}
+      <section ref={roadmapRef} className="relative py-32 md:py-48 px-8 md:px-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal text-center mb-16">
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">The Road Ahead</span>
+            <h2 className="font-zen text-4xl md:text-5xl text-[#292524] mb-3">Roadmap</h2>
+            <p className="text-[#78716c]/60 max-w-sm mx-auto font-light">From idea to empire. Milestone by milestone.</p>
+          </div>
+          <div className="reveal">
+            <RoadmapTimeline />
           </div>
         </div>
       </section>
@@ -375,11 +457,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== INVESTOR CTA ===== */}
+      <section className="relative py-32 md:py-48 px-8 md:px-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal">
+            <InvestorCTA />
+          </div>
+        </div>
+      </section>
+
       {/* ===== CTA / FOOTER ===== */}
       <section ref={ctaRef} className="relative py-32 md:py-48 px-8 md:px-16">
         <div className="max-w-xl mx-auto text-center">
           <div className="reveal mb-10">
-            <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">Investor Relations</span>
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">Stay in the Loop</span>
             <h2 className="font-zen text-4xl text-[#292524] mb-4">{config.cta.headline}</h2>
             <p className="text-[#78716c]/60 font-light">{config.cta.subheadline}</p>
           </div>
@@ -410,13 +501,18 @@ export default function Home() {
 
           <div className="reveal mb-8 flex items-center justify-center gap-4 text-xs font-light">
             <a href={GHOULVERSE_LINK?.domain || '#'} target="_blank" rel="noopener noreferrer"
-              className="text-[#78716c]/50 hover:text-[#a855f7] transition-colors flex items-center gap-1">
+              className="text-[#78716c]/50 hover:text-[#a855f7] transition-colors flex items-center gap-1 py-2 px-3 min-h-11">
               <Ghost className="w-3 h-3" /> Explore GHOULVERSE
             </a>
             <span className="text-[#78716c]/10">|</span>
             <a href={config.gameUrl} target="_blank" rel="noopener noreferrer"
-              className="text-[#78716c]/50 hover:text-[#06b6d4] transition-colors flex items-center gap-1">
+              className="text-[#78716c]/50 hover:text-[#06b6d4] transition-colors flex items-center gap-1 py-2 px-3 min-h-11">
               <Gamepad2 className="w-3 h-3" /> Play GHOULVERSE
+            </a>
+            <span className="text-[#78716c]/10">|</span>
+            <a href="#ecosystem"
+              className="text-[#78716c]/50 hover:text-[#f59e0b] transition-colors flex items-center gap-1 py-2 px-3 min-h-11">
+              <Briefcase className="w-3 h-3" /> Investors
             </a>
           </div>
 

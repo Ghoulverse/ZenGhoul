@@ -52,6 +52,10 @@ export interface GhoulConfig {
     adaptation: string;
     stats: { label: string; value: string }[];
   };
+  marketSize: string;
+  traction: { label: string; value: string; status: 'complete' | 'in-progress' | 'upcoming' }[];
+  ipStatus: string;
+  roadmap: { phase: string; title: string; items: string[]; status: 'complete' | 'in-progress' | 'upcoming' }[];
 }
 
 export const config: GhoulConfig = {
@@ -211,6 +215,15 @@ export const config: GhoulConfig = {
       live: true,
     },
     {
+      id: "geek",
+      name: "GEEK GHOUL",
+      domain: "https://www.geekghoul.com",
+      icon: "💻",
+      color: "#00d4ff",
+      realm: "The Mainframe",
+      live: true,
+    },
+    {
       id: "scholar",
       name: "SCHOLAR GHOUL",
       domain: "https://www.scholarghoul.com",
@@ -257,4 +270,20 @@ export const config: GhoulConfig = {
       { label: "Mindfulness Score", value: "10/10" },
     ],
   },
+
+  marketSize: "$4.5T global wellness economy",
+  traction: [
+    { label: "Formulations", value: "9 Complete", status: "complete" },
+    { label: "Manufacturing", value: "Partners Secured", status: "complete" },
+    { label: "Trademark", value: "IP Australia — Accepted", status: "complete" },
+    { label: "Retail", value: "In Negotiation", status: "in-progress" },
+  ],
+  ipStatus: "Trademark accepted — Class 3 (cleaning products). Independent brand filing complete.",
+  roadmap: [
+    { phase: "Phase 1", title: "Brand Launch", items: ["6 sites live", "54 SKUs formulated", "GOO RUNNER game launched"], status: "complete" },
+    { phase: "Phase 2", title: "Retail Partnerships", items: ["Endota Spa", "Jurlique", "Wellness retreats"], status: "in-progress" },
+    { phase: "Phase 3", title: "International", items: ["US TM filing", "UK/EU expansion", "Amazon FBA launch"], status: "upcoming" },
+    { phase: "Phase 4", title: "Game Monetisation", items: ["In-app purchases", "Character skins", "NFT collectibles"], status: "upcoming" },
+    { phase: "Phase 5", title: "New Ghouls", items: ["Toddler Ghoul", "Scholar Ghoul", "2 mystery verticals"], status: "upcoming" },
+  ],
 };
