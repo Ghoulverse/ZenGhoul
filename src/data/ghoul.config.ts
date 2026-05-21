@@ -55,6 +55,7 @@ export interface GhoulConfig {
   marketSize: string;
   traction: { label: string; value: string; status: 'complete' | 'in-progress' | 'upcoming' }[];
   ipStatus: string;
+  ipClasses: string[];
   roadmap: { phase: string; title: string; items: string[]; status: 'complete' | 'in-progress' | 'upcoming' }[];
 }
 
@@ -278,7 +279,13 @@ export const config: GhoulConfig = {
     { label: "Trademark", value: "IP Australia — Accepted", status: "complete" },
     { label: "Retail", value: "In Negotiation", status: "in-progress" },
   ],
-  ipStatus: "Trademark accepted — Class 3 (cleaning products). Independent brand filing complete.",
+  ipStatus: "Trademark filed — Class 3 (essential oils & spa products), Class 44 (wellness & spa services) and Class 41 (yoga & meditation instruction).",
+  ipClasses: [
+    "Class 3 — Essential oils, spa products & aromatherapy preparations",
+    "Class 44 — Wellness services, spa services & health retreats",
+    "Class 41 — Yoga instruction, meditation classes & wellness education",
+    "Class 10 — Massage apparatus, wellness devices & therapeutic equipment",
+  ],
   roadmap: [
     { phase: "Phase 1", title: "Brand Launch", items: ["6 sites live", "54 SKUs formulated", "GOO RUNNER game launched"], status: "complete" },
     { phase: "Phase 2", title: "Retail Partnerships", items: ["Endota Spa", "Jurlique", "Wellness retreats"], status: "in-progress" },
