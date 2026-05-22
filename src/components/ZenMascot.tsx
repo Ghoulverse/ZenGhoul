@@ -202,8 +202,9 @@ export default function ZenMascot() {
   const rafRef = useRef<number>(0);
   const clickCountRef = useRef(0);
   const typedRef = useRef('');
+  const cursorRef = useRef({ x, y, isMoving, velocity, mascotSize: 0, enlightened });
 
-  const mascotSize = typeof window !== 'undefined' && window.innerWidth < 768 ? 90 : 140;
+  const mascotSize = typeof window !== 'undefined' && window.innerWidth < 768 ? 180 : 280;
 
   const spawnRipples = useCallback((cx: number, cy: number, count = 3) => {
     for (let i = 0; i < count; i++) {
@@ -272,6 +273,8 @@ export default function ZenMascot() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [x, y, spawnRipples]);
 
+  cursorRef.current = { x, y, isMoving, velocity, mascotSize, enlightened };
+
   // Animation loop
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -289,6 +292,7 @@ export default function ZenMascot() {
     let wispTimer = 0;
 
     const animate = () => {
+      const { x, y, isMoving, velocity, mascotSize, enlightened } = cursorRef.current;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Smoke wisps from incense / movement
@@ -418,7 +422,7 @@ export default function ZenMascot() {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', resize);
     };
-  }, [x, y, isMoving, velocity, mascotSize, enlightened]);
+  }, []);
 
   return (
     <>
@@ -481,7 +485,7 @@ export default function ZenMascot() {
             draggable={false}
             style={{
               filter: isHovered
-                ? 'brightness(1.15) drop-shadow(0 0 20px rgba(168,85,247,0.5)) drop-shadow(0 0 40px rgba(196,181,253,0.3))'
+                ? 'brightness(1.15)'
                 : undefined,
               transition: 'filter 0.3s ease',
             }}
