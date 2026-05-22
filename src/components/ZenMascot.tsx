@@ -475,7 +475,7 @@ export default function ZenMascot() {
           onMouseLeave={() => setIsHovered(false)}
         >
           <img
-            src="/ghoul_logo.png"
+            src="/ghoul_mascot.png"
             alt="ZEN GHOUL"
             className="w-full h-full object-contain"
             draggable={false}

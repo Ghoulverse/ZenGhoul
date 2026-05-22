@@ -123,10 +123,7 @@ export default function Home() {
         style={{ background: 'rgba(248,245,255,0.7)', backdropFilter: 'blur(20px)' }}>
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.15)' }}>
-              <span className="text-lg">{config.icon}</span>
-            </div>
+            <img src="/ghoul_logo.png" alt={config.name} className="w-10 h-10 object-contain" draggable={false} />
             <span className="font-zen text-sm tracking-[0.3em] text-[#a855f7]">{config.name}</span>
           </div>
           <a href={GHOULVERSE_LINK?.domain || '#'} target="_blank" rel="noopener noreferrer"
