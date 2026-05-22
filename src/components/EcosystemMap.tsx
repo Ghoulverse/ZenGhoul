@@ -57,7 +57,7 @@ export default function EcosystemMap() {
         {/* Aggregate Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           {[
-            { label: 'Product SKUs', value: '108+', sub: 'Across 12 brands' },
+            { label: 'Product Lines', value: '108+', sub: 'Across 12 brands' },
             { label: 'Market Verticals', value: '12', sub: 'Zero overlap' },
             { label: 'Game Characters', value: '12', sub: 'In GHOULVERSE' },
             { label: 'Trademarks', value: '1', sub: 'GOO GHOUL™ accepted' },
