@@ -7,7 +7,6 @@ import {
   Briefcase, Building2,
 } from 'lucide-react';
 import { config } from '@/data/ghoul.config';
-import ZenMascot from '@/components/ZenMascot';
 import ZenParticles from '@/components/ZenParticles';
 import EcosystemMap from '@/components/EcosystemMap';
 import MarketStats from '@/components/MarketStats';
@@ -163,8 +162,8 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="mt-12">
-          <ZenMascot />
+        <div className="mt-12 w-64 h-64 mx-auto">
+          <img src="/ghoul_mascot.png" alt="ZenGhoul mascot" className="w-full h-full object-contain" draggable={false} style={{ animation: 'ghost-bob 2.5s ease-in-out infinite, ghost-sway 3.5s ease-in-out infinite' }} />
         </div>
 
         {/* Scroll indicator */}
