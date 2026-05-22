@@ -2,16 +2,18 @@ import { config } from '@/data/ghoul.config';
 import { Mail, Download, ExternalLink } from 'lucide-react';
 
 export default function InvestorCTA() {
+  const liveGhouls = config.crossLinks.filter((g) => g.id !== 'ghoulverse' && g.live).length;
+  const totalGhouls = config.crossLinks.filter((g) => g.id !== 'ghoulverse').length;
+
   return (
     <section className="relative py-24 md:py-32 px-4 overflow-hidden">
       <div className="max-w-4xl mx-auto">
         <div className="glass-glow rounded-2xl p-10 md:p-16 text-center relative overflow-hidden">
-          {/* Glow effects */}
-          <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full opacity-20 blur-[80px]" style={{ background: '#ff00ff' }} />
+          <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full opacity-20 blur-[80px]" style={{ background: '#a855f7' }} />
           <div className="absolute -bottom-20 -right-20 w-60 h-60 rounded-full opacity-20 blur-[80px]" style={{ background: '#00f0ff' }} />
 
           <div className="relative">
-            <span className="inline-flex items-center gap-2 px-4 py-2 text-[10px] font-bold tracking-[0.4em] uppercase border border-[#ff00ff]/30 text-[#ff00ff] mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 text-[10px] font-bold tracking-[0.4em] uppercase border border-[#a855f7]/30 text-[#a855f7] mb-6">
               <Mail className="w-3 h-3" />
               Investor Relations
             </span>
@@ -20,16 +22,15 @@ export default function InvestorCTA() {
               Invest in the GHOULVERSE
             </h2>
             <p className="text-[#94a3b8] max-w-xl mx-auto mb-10 text-lg">
-              We are building the Marvel of cleaning. Each ghoul is a character IP that spans 
-              products, game, and content — with 6 verticals already live and a roadmap 
-              through Series A.
+              We are building the Pixar of household science. {totalGhouls} ghouls across {totalGhouls} verticals — 
+              character IP first, partnerships second, products last. {liveGhouls} sites live, {totalGhouls - liveGhouls} in development.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
                 href="mailto:investors@ghoulverse.com"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bungee text-sm tracking-wider uppercase text-[#0a0a1a] transition-all hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #ff00ff, #ff0080)', boxShadow: '0 0 30px rgba(255,0,255,0.4)' }}
+                style={{ background: 'linear-gradient(135deg, #a855f7, #9333ea)', boxShadow: '0 0 30px rgba(168,85,247,0.4)' }}
               >
                 <Mail className="w-4 h-4" />
                 {config.cta.buttonText}
@@ -46,12 +47,12 @@ export default function InvestorCTA() {
             <div className="flex flex-wrap items-center justify-center gap-4 text-[#94a3b8]/60 text-xs">
               <span className="flex items-center gap-1.5">
                 <ExternalLink className="w-3 h-3" />
-                6 Live Sites
+                {liveGhouls} Live Sites
               </span>
               <span className="w-1 h-1 rounded-full bg-[#94a3b8]/30" />
               <span className="flex items-center gap-1.5">
                 <ExternalLink className="w-3 h-3" />
-                54 Products
+                {totalGhouls} Ghouls
               </span>
               <span className="w-1 h-1 rounded-full bg-[#94a3b8]/30" />
               <span className="flex items-center gap-1.5">
@@ -61,7 +62,7 @@ export default function InvestorCTA() {
               <span className="w-1 h-1 rounded-full bg-[#94a3b8]/30" />
               <span className="flex items-center gap-1.5">
                 <ExternalLink className="w-3 h-3" />
-                IP Protected
+                AU IP Filed
               </span>
             </div>
           </div>

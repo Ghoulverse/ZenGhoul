@@ -47,7 +47,7 @@ export default function IPBadge() {
           {/* Protection Grid */}
           <div className="grid grid-cols-1 gap-4">
             {[
-              { icon: Lock, title: 'Brand Lockup', desc: 'Logo, name, and character design trademarked across all classes.', color: '#ff00ff' },
+              { icon: Lock, title: 'Brand Lockup', desc: 'Logo, name, and character design trademarked across all classes.', color: '#a855f7' },
               { icon: Globe, title: 'International Strategy', desc: 'US, UK, and EU trademark filings planned for Phase 3.', color: '#00f0ff' },
               { icon: Shield, title: 'Character IP', desc: 'Each ghoul is a distinct character with product-line, game, and merch potential.', color: '#f59e0b' },
             ].map((item) => (
@@ -83,7 +83,7 @@ export default function IPBadge() {
           <div className="w-px h-4 bg-white/10" />
           <div className="flex items-center gap-2 text-[#94a3b8] text-xs">
             <Shield className="w-4 h-4 text-[#a855f7]" />
-            <span>6 Independent TM Filings</span>
+            <span>12 Independent TM Filings</span>
           </div>
         </div>
       </div>

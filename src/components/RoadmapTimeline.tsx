@@ -5,7 +5,7 @@ export default function RoadmapTimeline() {
   const statusConfig = {
     complete: { icon: CheckCircle2, color: '#00ff41', label: 'COMPLETE' },
     'in-progress': { icon: Clock, color: '#00f0ff', label: 'IN PROGRESS' },
-    upcoming: { icon: Circle, color: '#ff00ff', label: 'UPCOMING' },
+    upcoming: { icon: Circle, color: '#a855f7', label: 'UPCOMING' },
   };
 
   return (
@@ -25,7 +25,7 @@ export default function RoadmapTimeline() {
 
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#00ff41] via-[#00f0ff] to-[#ff00ff] opacity-30" />
+          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#00ff41] via-[#00f0ff] to-[#a855f7] opacity-30" />
 
           {config.roadmap.map((phase) => {
             const StatusIcon = statusConfig[phase.status].icon;

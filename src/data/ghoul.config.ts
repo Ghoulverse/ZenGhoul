@@ -57,6 +57,13 @@ export interface GhoulConfig {
   ipStatus: string;
   ipClasses: string[];
   roadmap: { phase: string; title: string; items: string[]; status: 'complete' | 'in-progress' | 'upcoming' }[];
+  fundingAsk: string;
+  valuation: string;
+  equityOffered: string;
+  projectedRevenue: { year: string; amount: string; sources: string }[];
+  roiTarget: string;
+  partnerships: { type: string; description: string }[];
+  revenueStreams: { stream: string; description: string; timeline: string }[];
 }
 
 export const config: GhoulConfig = {
@@ -171,12 +178,12 @@ export const config: GhoulConfig = {
       live: true,
     },
     {
-      id: "zen",
-      name: "ZEN GHOUL",
-      domain: "https://www.zenghoul.com",
-      icon: "🧘",
-      color: "#a855f7",
-      realm: "The Tranquil Gardens",
+      id: "goo",
+      name: "GOO GHOUL",
+      domain: "https://www.ghoulverse.com/ghouls/goo/",
+      icon: "👻",
+      color: "#ff00ff",
+      realm: "The Goo Dimension",
       live: true,
     },
     {
@@ -189,12 +196,12 @@ export const config: GhoulConfig = {
       live: true,
     },
     {
-      id: "tradie",
-      name: "TRADIE GHOUL",
-      domain: "https://www.tradieghoul.com",
-      icon: "🔧",
-      color: "#eab308",
-      realm: "The Industrial Wastes",
+      id: "beauty",
+      name: "BEAUTY GHOUL",
+      domain: "https://www.beautyghoul.com",
+      icon: "💄",
+      color: "#ec4899",
+      realm: "The Glamour Dimension",
       live: true,
     },
     {
@@ -207,12 +214,21 @@ export const config: GhoulConfig = {
       live: true,
     },
     {
-      id: "beauty",
-      name: "BEAUTY GHOUL",
-      domain: "https://www.beautyghoul.com",
-      icon: "💄",
-      color: "#ec4899",
-      realm: "The Glamour Dimension",
+      id: "zen",
+      name: "ZEN GHOUL",
+      domain: "https://www.zenghoul.com",
+      icon: "🧘",
+      color: "#a855f7",
+      realm: "The Tranquil Gardens",
+      live: true,
+    },
+    {
+      id: "tradie",
+      name: "TRADIE GHOUL",
+      domain: "https://www.tradieghoul.com",
+      icon: "🔧",
+      color: "#eab308",
+      realm: "The Industrial Wastes",
       live: true,
     },
     {
@@ -225,28 +241,55 @@ export const config: GhoulConfig = {
       live: true,
     },
     {
-      id: "scholar",
-      name: "SCHOLAR GHOUL",
-      domain: "https://www.scholarghoul.com",
-      icon: "📚",
+      id: "sport",
+      name: "SPORT GHOUL",
+      domain: "https://www.ghoulverse.com/ghouls/sport/",
+      icon: "🏆",
       color: "#f97316",
-      realm: "The Infinite Library",
+      realm: "The Arena",
       live: false,
     },
     {
-      id: "toddler",
-      name: "TODDLER GHOUL",
-      domain: "https://www.toddlerghoul.com",
+      id: "googoo",
+      name: "GOO GOO",
+      domain: "https://www.ghoulverse.com/ghouls/googoo/",
       icon: "🍼",
       color: "#3b82f6",
-      realm: "The Playful Realm",
+      realm: "The Nursery",
+      live: false,
+    },
+    {
+      id: "kid",
+      name: "KID GHOUL",
+      domain: "https://www.ghoulverse.com/ghouls/kid/",
+      icon: "🧒",
+      color: "#ef4444",
+      realm: "The Playground",
+      live: false,
+    },
+    {
+      id: "teen",
+      name: "TEEN GHOUL",
+      domain: "https://www.ghoulverse.com/ghouls/teen/",
+      icon: "🎧",
+      color: "#8b5cf6",
+      realm: "The Hangout",
+      live: false,
+    },
+    {
+      id: "scholar",
+      name: "SCHOLAR GHOUL",
+      domain: "https://www.ghoulverse.com/ghouls/scholar/",
+      icon: "📚",
+      color: "#f97316",
+      realm: "The Infinite Library",
       live: false,
     },
   ],
 
   cta: {
     headline: "Investor Inquiries",
-    subheadline: "Join the GHOULVERSE portfolio. Request the full product deck and financial projections.",
+    subheadline: "Join the GHOULVERSE portfolio. Request the full investor deck and financial projections.",
     buttonText: "Request Deck",
     placeholderText: "Enter your email...",
   },
@@ -274,10 +317,10 @@ export const config: GhoulConfig = {
 
   marketSize: "$4.5T global wellness economy",
   traction: [
-    { label: "Formulations", value: "9 Complete", status: "complete" },
-    { label: "Manufacturing", value: "Partners Secured", status: "complete" },
-    { label: "Trademark", value: "IP Australia — Accepted", status: "complete" },
-    { label: "Retail", value: "In Negotiation", status: "in-progress" },
+    { label: "Character Websites", value: "6 Live", status: "complete" },
+    { label: "GOO GHOUL™ Trademark", value: "IP Australia — Accepted", status: "complete" },
+    { label: "GHOULVERSE Game", value: "Live", status: "complete" },
+    { label: "Brand Partnerships", value: "Seeking First Deals", status: "upcoming" },
   ],
   ipStatus: "Trademark filed — Class 3 (essential oils & spa products), Class 44 (wellness & spa services) and Class 41 (yoga & meditation instruction).",
   ipClasses: [
@@ -287,10 +330,36 @@ export const config: GhoulConfig = {
     "Class 10 — Massage apparatus, wellness devices & therapeutic equipment",
   ],
   roadmap: [
-    { phase: "Phase 1", title: "Brand Launch", items: ["6 sites live", "54 SKUs formulated", "GOO RUNNER game launched"], status: "complete" },
-    { phase: "Phase 2", title: "Retail Partnerships", items: ["Endota Spa", "Jurlique", "Wellness retreats"], status: "in-progress" },
-    { phase: "Phase 3", title: "International", items: ["US TM filing", "UK/EU expansion", "Amazon FBA launch"], status: "upcoming" },
-    { phase: "Phase 4", title: "Game Monetisation", items: ["In-app purchases", "Character skins", "NFT collectibles"], status: "upcoming" },
-    { phase: "Phase 5", title: "New Ghouls", items: ["Toddler Ghoul", "Scholar Ghoul", "2 mystery verticals"], status: "upcoming" },
+    { phase: "Phase 1", title: "Foundation", items: ["12 character websites live", "GOO GHOUL™ Class 3 (AU) filed", "GHOULVERSE game launched"], status: "complete" },
+    { phase: "Phase 1.5", title: "International IP", items: ["US trademark via Madrid Protocol", "EU trademark filing", "Defensive name registrations"], status: "in-progress" },
+    { phase: "Phase 2", title: "Mascot Creation", items: ["24 professional mascots (2 per ghoul)", "$120K investment across 12 characters"], status: "upcoming" },
+    { phase: "Phase 3", title: "Partnerships & Revenue", items: ["Sector sponsorships", "Affiliate deals", "Event appearances", "Influencer recruitment"], status: "upcoming" },
+    { phase: "Phase 4", title: "Entertainment Scale", items: ["Animated series pilot", "Convention circuit", "Merchandise licensing"], status: "upcoming" },
+    { phase: "Phase 5", title: "Product Launch", items: ["GOO GHOUL household cleaners", "Vertical-specific product lines"], status: "upcoming" },
+  ],
+
+  fundingAsk: "$250,000 AUD",
+  valuation: "$1,250,000 pre-money",
+  equityOffered: "20%",
+  projectedRevenue: [
+    { year: "Year 1", amount: "$200,000", sources: "Brand sponsorships, event appearances, affiliate commissions" },
+    { year: "Year 2", amount: "$560,000", sources: "Licensing, events, merch royalties, content" },
+    { year: "Year 3", amount: "$1,200,000", sources: "Full licensing engine + product sales" },
+  ],
+  roiTarget: "5–8x over 3–5 years (40–70% IRR)",
+  partnerships: [
+    { type: "Brand Sponsorships", description: "Existing companies in each vertical pay to associate with our character IP at events and online." },
+    { type: "Affiliate Marketing", description: "Partner products featured on ghoul websites — we earn commission on referred sales." },
+    { type: "Event Appearances", description: "Mascots appear at sports events, conventions, retail launches — appearance fees + brand exposure." },
+    { type: "Licensing", description: "Brands license ghoul characters for their own marketing, packaging, and promotions." },
+  ],
+  revenueStreams: [
+    { stream: "Sponsorships", description: "Sector-specific brand deals per ghoul", timeline: "Year 1" },
+    { stream: "Events", description: "Mascot appearances and activations", timeline: "Year 1" },
+    { stream: "Affiliate", description: "Commission on partner product sales", timeline: "Year 1" },
+    { stream: "Licensing", description: "Character IP licensing to brands", timeline: "Year 2" },
+    { stream: "Merchandise", description: "Royalties on plush, apparel, accessories", timeline: "Year 2" },
+    { stream: "Animation", description: "YouTube/streaming ad revenue, distribution deals", timeline: "Year 2" },
+    { stream: "Products", description: "Owned product lines (GOO GHOUL cleaners first)", timeline: "Year 3" },
   ],
 };

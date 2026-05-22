@@ -194,7 +194,7 @@ export default function Home() {
               { icon: Wind, value: '∞', label: 'Breaths Taken', color: '#a855f7' },
               { icon: CircleDot, value: '0', label: 'Stress Remaining', color: '#06b6d4' },
               { icon: Waves, value: '100%', label: 'Stillness Rate', color: '#a855f7' },
-              { icon: Building2, value: '6', label: 'House of GHOUL', color: '#a855f7' },
+              { icon: Building2, value: '12', label: 'House of GHOUL', color: '#a855f7' },
             ].map((stat, i) => (
               <div key={i} className="reveal breathe p-10 text-center transition-all duration-700 hover:scale-[1.02]"
                 style={{ background: 'rgba(255,255,255,0.5)', borderRadius: '50%', aspectRatio: '1 / 1.1' }}>
@@ -213,7 +213,7 @@ export default function Home() {
           <div className="reveal text-center mb-16">
             <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">The Ecosystem</span>
             <h2 className="font-zen text-4xl md:text-5xl text-[#292524] mb-3">House of GHOUL</h2>
-            <p className="font-zen text-lg text-[#a855f7]/80">Eight brands. One universe. Infinite potential.</p>
+            <p className="font-zen text-lg text-[#a855f7]/80">Twelve brands. One universe. Infinite potential.</p>
           </div>
           <div className="reveal">
             <EcosystemMap />
@@ -346,7 +346,7 @@ export default function Home() {
           <div className="reveal text-center mb-16">
             <span className="text-[10px] tracking-[0.4em] uppercase text-[#a855f7]/50 mb-4 block">Market Opportunity</span>
             <h2 className="font-zen text-4xl md:text-5xl text-[#292524] mb-3">The Numbers</h2>
-            <p className="text-[#78716c]/60 max-w-sm mx-auto font-light">Wellness meets gaming. A $200B+ intersection.</p>
+            <p className="text-[#78716c]/60 max-w-sm mx-auto font-light">Wellness meets gaming. A $4.5T+ intersection.</p>
           </div>
           <div className="reveal">
             <MarketStats />
@@ -374,7 +374,7 @@ export default function Home() {
           <div className="reveal text-center mb-16">
             <span className="text-[10px] tracking-[0.4em] uppercase text-[#06b6d4]/50 mb-4 block">The Collective</span>
             <h2 className="font-zen text-4xl md:text-5xl text-[#292524] mb-3">The Ghoulverse</h2>
-            <p className="text-[#78716c]/60 max-w-sm mx-auto font-light">Eight spirits. One universe. Find your path.</p>
+            <p className="text-[#78716c]/60 max-w-sm mx-auto font-light">Twelve spirits. One universe. Find your path.</p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 mb-12">
@@ -413,7 +413,7 @@ export default function Home() {
             </div>
             <Gamepad2 className="w-10 h-10 text-[#a855f7]/60 mx-auto mb-6" />
             <h2 className="font-zen text-3xl md:text-4xl text-[#292524] mb-4">Play GHOULVERSE</h2>
-            <p className="text-[#78716c]/60 max-w-sm mx-auto mb-8 font-light">Pilot {config.name} through the Void. Battle bacteria, unlock all 8 ghouls.</p>
+            <p className="text-[#78716c]/60 max-w-sm mx-auto mb-8 font-light">Pilot {config.name} through the Void. Battle bacteria, unlock all 12 ghouls.</p>
             <a href={config.gameUrl} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 font-zen text-sm tracking-wider text-[#a855f7] transition-all hover:scale-105"
               style={{ border: '1px solid rgba(168,85,247,0.3)', borderRadius: '9999px' }}>
