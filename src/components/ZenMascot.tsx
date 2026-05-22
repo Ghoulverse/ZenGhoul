@@ -39,7 +39,7 @@ const SPEECH_LINES = [
   "Peace flows...",
 ];
 
-function ZenGhostSVG({ expression, breathPhase, isHovered }: {
+export function ZenGhostSVG({ expression, breathPhase, isHovered }: {
   expression: number;
   breathPhase: number;
   isHovered: boolean;
@@ -189,8 +189,8 @@ function ZenGhostSVG({ expression, breathPhase, isHovered }: {
 }
 
 export default function ZenMascot() {
-  const { x, y, isMoving, velocity, breathPhase } = useZenCursor();
-  const [expression, setExpression] = useState(0);
+  const { x, y, isMoving, velocity, breathPhase: _breathPhase } = useZenCursor();
+  const [_expression, setExpression] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [speechBubble, setSpeechBubble] = useState('');
   const [enlightened, setEnlightened] = useState(false);
@@ -474,7 +474,18 @@ export default function ZenMascot() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <ZenGhostSVG expression={expression} breathPhase={breathPhase} isHovered={isHovered} />
+          <img
+            src="/ghoul_logo.png"
+            alt="ZEN GHOUL"
+            className="w-full h-full object-contain"
+            draggable={false}
+            style={{
+              filter: isHovered
+                ? 'brightness(1.15) drop-shadow(0 0 20px rgba(168,85,247,0.5)) drop-shadow(0 0 40px rgba(196,181,253,0.3))'
+                : undefined,
+              transition: 'filter 0.3s ease',
+            }}
+          />
         </div>
       </div>
     </>

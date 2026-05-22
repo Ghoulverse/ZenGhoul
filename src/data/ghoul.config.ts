@@ -322,7 +322,7 @@ export const config: GhoulConfig = {
     { label: "GHOULVERSE Game", value: "Live", status: "complete" },
     { label: "Brand Partnerships", value: "Seeking First Deals", status: "upcoming" },
   ],
-  ipStatus: "Trademark filed — Class 3 (essential oils & spa products), Class 44 (wellness & spa services) and Class 41 (yoga & meditation instruction).",
+  ipStatus: "Trademark classes identified — Class 3 (essential oils & spa products), Class 44 (wellness & spa services) and Class 41 (yoga & meditation instruction). Filing planned post-funding.",
   ipClasses: [
     "Class 3 — Essential oils, spa products & aromatherapy preparations",
     "Class 44 — Wellness services, spa services & health retreats",

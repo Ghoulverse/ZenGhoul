@@ -60,7 +60,7 @@ export default function EcosystemMap() {
             { label: 'Product SKUs', value: '108+', sub: 'Across 12 brands' },
             { label: 'Market Verticals', value: '12', sub: 'Zero overlap' },
             { label: 'Game Characters', value: '12', sub: 'In GHOULVERSE' },
-            { label: 'Trademarks', value: '12+', sub: 'IP Australia' },
+            { label: 'Trademarks', value: '1', sub: 'GOO GHOUL™ accepted' },
           ].map((stat) => (
             <div key={stat.label} className="glass rounded-xl p-5 text-center">
               <p className="font-mono text-3xl md:text-4xl text-[#a855f7] mb-1">{stat.value}</p>

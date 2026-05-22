@@ -62,7 +62,7 @@ export default function InvestorCTA() {
               <span className="w-1 h-1 rounded-full bg-[#94a3b8]/30" />
               <span className="flex items-center gap-1.5">
                 <ExternalLink className="w-3 h-3" />
-                AU IP Filed
+                GOO GHOUL™ TM Accepted
               </span>
             </div>
           </div>
