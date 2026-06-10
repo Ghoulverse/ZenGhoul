@@ -1,6 +1,7 @@
 import ZenMascot from '@/components/ZenMascot';
 import ZenParticles from '@/components/ZenParticles';
 import Home from '@/pages/Home';
+import CookieBanner from '@/components/CookieBanner';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
 
       {/* Page content */}
       <Home />
-    </>
+      <CookieBanner />
+</>
   );
 }

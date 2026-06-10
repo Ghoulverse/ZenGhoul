@@ -485,12 +485,12 @@ export default function Home() {
             {[Twitter, Instagram, Youtube].map((Icon, i) => {
               const colors = ['#a855f7', '#06b6d4', '#a855f7'];
               return (
-                <a key={i} href="#" className="w-11 h-11 flex items-center justify-center transition-all hover:scale-110"
+                <div key={i} className="w-11 h-11 flex items-center justify-center transition-all hover:scale-110"
                   style={{ borderRadius: '50%', border: `1px solid ${colors[i]}15`, background: 'rgba(255,255,255,0.4)' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${colors[i]}30`; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${colors[i]}15`; }}>
                   <Icon className="w-4 h-4" style={{ color: colors[i], opacity: 0.6 }} />
-                </a>
+                </div>
               );
             })}
           </div>
@@ -512,7 +512,15 @@ export default function Home() {
             </a>
           </div>
 
-          <p className="reveal text-[#78716c]/15 text-xs tracking-wider font-light">
+                    <div className="reveal mb-4 flex items-center justify-center gap-3 text-[10px] tracking-wider uppercase text-[#78716c]/30">
+            <a href="/privacy.html" className="hover:text-[#a855f7] transition-colors">Privacy Policy</a>
+            <span>|</span>
+            <a href="/terms.html" className="hover:text-[#a855f7] transition-colors">Terms of Service</a>
+            <span>|</span>
+            <a href="/cookies.html" className="hover:text-[#a855f7] transition-colors">Cookie Policy</a>
+          </div>
+
+<p className="reveal text-[#78716c]/15 text-xs tracking-wider font-light">
             &copy; 2025 <span className="font-zen text-[#a855f7]/30">{config.name}</span> — Part of the{' '}
             <a href={GHOULVERSE_LINK?.domain || '#'} target="_blank" rel="noopener noreferrer" className="hover:text-[#a855f7] transition-colors">GHOULVERSE</a>
           </p>
