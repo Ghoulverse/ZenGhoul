@@ -1,4 +1,4 @@
-name: Deploy GOOGHOUL to Cloudflare Pages
+name: Deploy ZEN GHOUL to Cloudflare Pages
 
 on:
   push:
